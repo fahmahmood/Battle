@@ -3,7 +3,7 @@ require 'player'
 describe Player do
 
 subject(:p1) { described_class.new('P1')}
-subject(:p2) {described_class.new('P2')}
+subject(:p2) { described_class.new('P2')}
 
   describe '#name' do 
     it 'responds to playername method' do 
@@ -21,12 +21,12 @@ subject(:p2) {described_class.new('P2')}
     end
   end
 
-  describe '#attack' do
-    it 'allows opponents to attack' do
-      expect(p2).to receive(:suffer_damage)
-      p1.attack(p2)
-    end
-  end
+  # describe '#attack' do
+  #   it 'allows opponents to attack' do
+  #     expect(p2).to receive(:suffer_damage)
+  #     p1.attack(p2)
+  #   end
+  # end
 
 
 end 

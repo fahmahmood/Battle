@@ -2,12 +2,13 @@ require 'sinatra/base'
 require 'shotgun'
 require 'capybara'
 require './lib/player'
+require './lib/game'
 
 
 
 class Battle < Sinatra::Base
 
-  enable :sessions
+  # enable :sessions
 
   get '/' do
     erb(:index)
@@ -16,6 +17,7 @@ class Battle < Sinatra::Base
   post '/names' do
     $player1 = Player.new(params[:player1])
     $player2 = Player.new(params[:player2])
+    $game = Game.new($player1, $player2)
     redirect '/play'
   end
 
@@ -24,7 +26,7 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    $player1.attack($player2)
+    $game.attack($game.player2)
     erb(:attack)
   end
   # start the server if ruby file executed directly
